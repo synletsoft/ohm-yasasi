@@ -1404,65 +1404,20 @@ function or(l, r)
 self.C3_ExpressionFuncs = [
 		p => {
 			const v0 = p._GetNode(0).GetVar();
+			return () => (1 - v0.GetValue());
+		},
+		() => 0,
+		() => "",
+		() => 1,
+		p => {
+			const v0 = p._GetNode(0).GetVar();
 			return () => v0.GetValue();
 		},
 		p => {
 			const v0 = p._GetNode(0).GetVar();
-			return () => (v0.GetValue() - 2);
+			return () => (745 + (v0.GetValue() * (376 / 12)));
 		},
-		p => {
-			const v0 = p._GetNode(0).GetVar();
-			const v1 = p._GetNode(1).GetVar();
-			return () => Math.floor((v0.GetValue() / v1.GetValue()));
-		},
-		p => {
-			const f0 = p._GetNode(0).GetBoundMethod();
-			const v1 = p._GetNode(1).GetVar();
-			const v2 = p._GetNode(2).GetVar();
-			return () => f0(0, ((Math.round((100 * (v1.GetValue() / v2.GetValue()))) % 100) - 9));
-		},
-		() => 1,
-		() => 0,
-		() => 91,
-		() => 92,
-		p => {
-			const v0 = p._GetNode(0).GetVar();
-			return () => (v0.GetValue() + 1);
-		},
-		p => {
-			const f0 = p._GetNode(0).GetBoundMethod();
-			return () => Math.round(C3.clamp(((f0("controls") - 745) / 31.333333), 0, 12));
-		},
-		p => {
-			const v0 = p._GetNode(0).GetVar();
-			return () => (745 + (v0.GetValue() * 31.333333));
-		},
-		() => "",
-		p => {
-			const n0 = p._GetNode(0);
-			return () => C3.clamp(n0.ExpObject(), 745, 1121);
-		},
-		p => {
-			const n0 = p._GetNode(0);
-			return () => Math.round(C3.clamp(((n0.ExpObject() - 745) / 31.333333), 0, 12));
-		},
-		p => {
-			const f0 = p._GetNode(0).GetBoundMethod();
-			return () => (2 + C3.clamp(Math.floor(((f0("controls") - 120) / 189)), 0, 8));
-		},
-		p => {
-			const v0 = p._GetNode(0).GetVar();
-			return () => (1 - v0.GetValue());
-		},
-		p => {
-			const v0 = p._GetNode(0).GetVar();
-			const v1 = p._GetNode(1).GetVar();
-			const v2 = p._GetNode(2).GetVar();
-			const v3 = p._GetNode(3).GetVar();
-			return () => (and((and((and("Ohm Yasası: ", v0.GetValue()) + " V, "), v1.GetValue()) + " Ω, "), (Math.round((100 * (v2.GetValue() / v3.GetValue()))) / 100)) + " A (I = V/R)");
-		},
-		() => "Ohm Yasası Deneyi",
-		() => 100,
+		() => 1007.5,
 		p => {
 			const n0 = p._GetNode(0);
 			return () => (223.1 + (189 * n0.ExpObject()));
@@ -1470,7 +1425,88 @@ self.C3_ExpressionFuncs = [
 		() => 977.5,
 		p => {
 			const n0 = p._GetNode(0);
+			return () => C3.clamp(n0.ExpObject(), 745, 1121);
+		},
+		p => {
+			const n0 = p._GetNode(0);
+			return () => (Math.round(C3.clamp(((n0.ExpObject() - 745) * (120 / 376)), 0, 120)) / 10);
+		},
+		p => {
+			const n0 = p._GetNode(0);
+			return () => C3.clamp(n0.ExpObject(), 94, 1826);
+		},
+		p => {
+			const n0 = p._GetNode(0);
+			return () => C3.clamp(n0.ExpObject(), 74, 1006);
+		},
+		p => {
+			const n0 = p._GetNode(0);
+			return () => Math.abs((n0.ExpObject() - 956.5));
+		},
+		() => 145,
+		p => {
+			const n0 = p._GetNode(0);
+			return () => Math.abs((n0.ExpObject() - 759));
+		},
+		() => 88,
+		p => {
+			const n0 = p._GetNode(0);
 			return () => (2 + n0.ExpObject());
+		},
+		p => {
+			const v0 = p._GetNode(0).GetVar();
+			const v1 = p._GetNode(1).GetVar();
+			const v2 = p._GetNode(2).GetVar();
+			return () => (and((and((and("Ohm Yasası: ", v0.GetValue()) + " V, "), v1.GetValue()) + " Ω, "), (v2.GetValue() / 100)) + " A (I = V/R)");
+		},
+		() => "Ohm Yasası Deneyi",
+		p => {
+			const v0 = p._GetNode(0).GetVar();
+			const v1 = p._GetNode(1).GetVar();
+			return () => Math.round((Math.round((v0.GetValue() * 10)) * (10 / v1.GetValue())));
+		},
+		p => {
+			const v0 = p._GetNode(0).GetVar();
+			return () => Math.floor(v0.GetValue());
+		},
+		p => {
+			const v0 = p._GetNode(0).GetVar();
+			return () => (v0.GetValue() - 2);
+		},
+		p => {
+			const v0 = p._GetNode(0).GetVar();
+			return () => Math.floor((v0.GetValue() / 100));
+		},
+		p => {
+			const v0 = p._GetNode(0).GetVar();
+			const v1 = p._GetNode(1).GetVar();
+			const v2 = p._GetNode(2).GetVar();
+			const v3 = p._GetNode(3).GetVar();
+			return () => (((((v0.GetValue() % 100)) === (0) ? 1 : 0)) ? (0) : ((((((v1.GetValue() % 100)) >= (10) ? 1 : 0)) ? (((v2.GetValue() % 100) - 9)) : ((90 + (v3.GetValue() % 100))))));
+		},
+		p => {
+			const v0 = p._GetNode(0).GetVar();
+			return () => (Math.round((v0.GetValue() * 10)) % 10);
+		},
+		p => {
+			const v0 = p._GetNode(0).GetVar();
+			return () => (1014 + ((((v0.GetValue()) >= (10) ? 1 : 0)) ? (28) : (0)));
+		},
+		p => {
+			const v0 = p._GetNode(0).GetVar();
+			return () => (374.5 + ((((v0.GetValue()) >= (10) ? 1 : 0)) ? (20) : (0)));
+		},
+		p => {
+			const v0 = p._GetNode(0).GetVar();
+			return () => (293 + ((((v0.GetValue()) >= (10) ? 1 : 0)) ? ((-5)) : (0)));
+		},
+		p => {
+			const v0 = p._GetNode(0).GetVar();
+			return () => ((v0.GetValue()).toString() + " V");
+		},
+		p => {
+			const v0 = p._GetNode(0).GetVar();
+			return () => (and("Direnç: ", v0.GetValue()) + " Ω");
 		},
 		() => 300,
 		p => {
